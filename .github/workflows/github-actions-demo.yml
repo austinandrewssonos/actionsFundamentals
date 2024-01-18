@@ -1,0 +1,24 @@
+name: GitHub Actions Demo
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore: [.github/**]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '15 6 * * 0'
+  
+jobs:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First step
+        run: |
+          echo "This job was triggered by: ${{ github.event_name }}"
+          echo "Branch name: ${{ github.ref}}"
+      - name: List files
+        run: |
+          echo "This repo contains: "
+          tree
+          
